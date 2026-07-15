@@ -1,0 +1,118 @@
+/**
+ * Tailwind CSS v4 Entry Point with AvisaTech Design Tokens
+ *
+ * This file imports Tailwind's base styles and defines custom CSS variables
+ * (design tokens) extracted from the Stitch prototype's design system.
+ *
+ * The color palette follows a "Corporate Modernism" aesthetic:
+ * - Deep slate/navy for primary actions and text hierarchy
+ * - Warm, neutral surfaces for backgrounds
+ * - Semantic colors for status (red=error, green=done, amber=medium)
+ */
+
+@import "tailwindcss";
+
+/* Custom Inter font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@theme {
+  /* === Color Tokens from Stitch Design System === */
+  --color-primary: #091426;
+  --color-primary-container: #1e293b;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #8590a6;
+  --color-on-primary-fixed: #111c2d;
+  --color-on-primary-fixed-variant: #3c475a;
+
+  --color-secondary: #505f76;
+  --color-secondary-container: #d0e1fb;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #54647a;
+
+  --color-tertiary: #1e1200;
+  --color-tertiary-container: #35260c;
+  --color-on-tertiary-container: #a38c6a;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-surface: #fbf8fa;
+  --color-surface-dim: #dcd9db;
+  --color-surface-container: #f0edef;
+  --color-surface-container-low: #f5f3f4;
+  --color-surface-container-high: #eae7e9;
+  --color-surface-container-highest: #e4e2e3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #e4e2e3;
+
+  --color-on-surface: #1b1b1d;
+  --color-on-surface-variant: #45474c;
+
+  --color-outline: #75777d;
+  --color-outline-variant: #c5c6cd;
+
+  --color-background: #fbf8fa;
+  --color-on-background: #1b1b1d;
+
+  --color-inverse-surface: #303032;
+  --color-inverse-on-surface: #f3f0f2;
+
+  /* Semantic status colors */
+  --color-success: #16a34a;
+  --color-success-light: #dcfce7;
+
+  /* === Spacing Scale (8pt grid) === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* === Border Radius === */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* === Font Family === */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* === Base Styles === */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Custom Scrollbar (matches Stitch prototype) === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-container-highest);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline-variant);
+}
+
+/* === Priority Border Accent Classes === */
+.task-card-high {
+  border-left: 4px solid var(--color-error);
+}
+.task-card-medium {
+  border-left: 4px solid var(--color-on-tertiary-container);
+}
+.task-card-low {
+  border-left: 4px solid var(--color-on-secondary-container);
+}

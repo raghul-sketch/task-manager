@@ -1,0 +1,22 @@
+# Docker Compose for local PostgreSQL development database.
+# Usage: docker-compose up -d
+# This spins up a PostgreSQL 16 instance accessible on localhost:5432.
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: taskmanager-db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: taskmanager
+    volumes:
+      # Persist database data across container restarts
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
